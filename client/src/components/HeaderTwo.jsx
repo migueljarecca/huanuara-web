@@ -1,7 +1,23 @@
 import { Link, NavLink } from "react-router-dom"
-import { Bars3, MapPin, XMark } from "../assets/icons/Icons"
+import { Bars3, ChevronDown, ChevronUp, MapPin, XMark } from "../assets/icons/Icons"
+import { useState } from "react";
 
 export const HeaderTwo = () => {
+
+    const [isActiveDropdown, setIsActiveDropdown] = useState(false);
+    const [ isMobileMenuOpen, setIsMobileMenuOpen ] = useState(false);
+
+    // Handler for dropdown
+    const handlerDropdown = () => {
+        if (isMobileView) {
+            setIsActiveDropdown(!isActiveDropdown);
+        }
+    };
+
+    // Handler for hamburger menu
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
 
     return(
         <header className="header">
@@ -10,7 +26,7 @@ export const HeaderTwo = () => {
                 <img src="/images/municipalidad-distrital-huanuara.png" alt="" />
             </Link>
 
-            <nav className='header-nav'>
+            <nav className={`header-nav ${isMobileMenuOpen ? 'active' : ''}`}>
                 <ul>
                         
                     <li>
@@ -21,11 +37,17 @@ export const HeaderTwo = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink 
-                            to={"/"} 
+                        <div 
+                            className="menu-dropdown" 
+                            onClick={handlerDropdown}
+                            // onMouseEnter={() => !isMobileView && setIsActiveDropdown(true)}
+                            // onMouseLeave={() => !isMobileView && setIsActiveDropdown(false)}
                         >
-                            Inicio
-                        </NavLink>
+                            <span className="menu-name">Distrito</span>
+                            <div className="menu-caret">
+                                {isActiveDropdown ? <ChevronUp /> : <ChevronDown />}
+                            </div>
+                        </div>                        
                     </li>
                     <li>
                         <NavLink 
@@ -58,10 +80,9 @@ export const HeaderTwo = () => {
                 <div 
                     className='header-icon-wrapper'
                     id='mobile-menu-icon'
-                    // onClick={toggleMobileMenu}                    
+                    onClick={toggleMobileMenu}                    
                 >
-                    {/* {isMobileMenuOpen ? <XMark /> : <Bars3 />} */}
-                    <Bars3 />
+                    {isMobileMenuOpen ? <XMark /> : <Bars3 />}
                 </div>
             </div>
                              
