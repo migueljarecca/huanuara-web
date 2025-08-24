@@ -1,13 +1,29 @@
 import { Link, NavLink } from "react-router-dom"
 import { Bars3, ChevronDown, ChevronUp, MapPin, XMark } from "../assets/icons/Icons"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const HeaderTwo = () => {
 
     const [isActiveDropdown, setIsActiveDropdown] = useState(false);
     const [ isMobileMenuOpen, setIsMobileMenuOpen ] = useState(false);
+    const [isMobileView, setIsMobileView] = useState(false);
 
-    // Handler for dropdown
+    // Detect screen size change
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsMobileView(window.innerWidth < 768);
+        };
+            
+        checkScreenSize();
+    
+        window.addEventListener('resize', checkScreenSize);
+    
+        return() => {
+            window.removeEventListener('resize', checkScreenSize);
+        };
+    },[]);
+
+    // Handler for dropdown with click
     const handlerDropdown = () => {
         if (isMobileView) {
             setIsActiveDropdown(!isActiveDropdown);
@@ -27,7 +43,7 @@ export const HeaderTwo = () => {
             </Link>
 
             <nav className={`header-nav ${isMobileMenuOpen ? 'active' : ''}`}>
-                <ul>
+                <ul className="menu">
                         
                     <li>
                         <NavLink 
@@ -36,19 +52,161 @@ export const HeaderTwo = () => {
                             Inicio
                         </NavLink>
                     </li>
-                    <li>
+
+                    <li
+                        onMouseEnter={() => !isMobileView && setIsActiveDropdown(true)}
+                        onMouseLeave={() => !isMobileView && setIsActiveDropdown(false)}                    
+                    >
                         <div 
                             className="menu-dropdown" 
                             onClick={handlerDropdown}
-                            // onMouseEnter={() => !isMobileView && setIsActiveDropdown(true)}
-                            // onMouseLeave={() => !isMobileView && setIsActiveDropdown(false)}
                         >
                             <span className="menu-name">Distrito</span>
                             <div className="menu-caret">
                                 {isActiveDropdown ? <ChevronUp /> : <ChevronDown />}
                             </div>
-                        </div>                        
+                        </div>
+                        
+                            <ul 
+                                className={`sub-menu ${isActiveDropdown ? 'active' : ''}`}
+                            >
+                                <li>
+                                    <NavLink 
+                                        to={"/district/history"} 
+                                        className="sub-menu-link"
+                                        onClick={() => {
+                                            setIsActiveDropdown(false)
+                                            isMobileView && setIsMobileMenuOpen(false);
+                                        }}
+                                    >
+                                        Historia
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink 
+                                        to="/district/location" 
+                                        className="sub-menu-link"
+                                        onClick={() => {
+                                            setIsActiveDropdown(false)
+                                            isMobileView && setIsMobileMenuOpen(false);
+                                        }}
+                                    >
+                                        Ubicación
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink 
+                                        to="/district/geography" 
+                                        className="sub-menu-link"
+                                        onClick={() => {
+                                            setIsActiveDropdown(false)
+                                            isMobileView && setIsMobileMenuOpen(false);
+                                        }}
+                                    >
+                                        Geografía y Demografía
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink 
+                                        to="/district/tourism" 
+                                        className="sub-menu-link"
+                                        onClick={() => {
+                                            setIsActiveDropdown(false)
+                                            isMobileView && setIsMobileMenuOpen(false);
+                                        }}
+                                    >
+                                        Lugares Turísticos
+                                    </NavLink>
+                                </li>
+                            </ul>     
                     </li>
+
+                    <li
+                        onMouseEnter={() => !isMobileView && setIsActiveDropdown(true)}
+                        onMouseLeave={() => !isMobileView && setIsActiveDropdown(false)}                    
+                    >
+                        <div 
+                            className="menu-dropdown" 
+                            onClick={handlerDropdown}
+                        >
+                            <span className="menu-name">Municipio</span>
+                            <div className="menu-caret">
+                                {isActiveDropdown ? <ChevronUp /> : <ChevronDown />}
+                            </div>
+                        </div>
+                        
+                            <ul 
+                                className={`sub-menu ${isActiveDropdown ? 'active' : ''}`}
+                            >
+                                <li>
+                                    <NavLink 
+                                        to={"/municipality/mission-vision"} 
+                                        className="sub-menu-link"
+                                        onClick={() => {
+                                            setIsActiveDropdown(false)
+                                            isMobileView && setIsMobileMenuOpen(false);
+                                        }}
+                                    >
+                                        Misión y Visión
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink 
+                                        to="/municipality/authorities" 
+                                        className="sub-menu-link"
+                                        onClick={() => {
+                                            setIsActiveDropdown(false)
+                                            isMobileView && setIsMobileMenuOpen(false);
+                                        }}
+                                    >
+                                        Autoridades
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink 
+                                        to="/municipality/council" 
+                                        className="sub-menu-link"
+                                        onClick={() => {
+                                            setIsActiveDropdown(false)
+                                            isMobileView && setIsMobileMenuOpen(false);
+                                        }}
+                                    >
+                                        Consejo Municipal
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink 
+                                        to="/municipality/organization-chart" 
+                                        className="sub-menu-link"
+                                        onClick={() => {
+                                            setIsActiveDropdown(false)
+                                            isMobileView && setIsMobileMenuOpen(false);
+                                        }}
+                                    >
+                                        Organigrama
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink 
+                                        to="/municipality/neighborhood-boards" 
+                                        className="sub-menu-link"
+                                        onClick={() => {
+                                            setIsActiveDropdown(false)
+                                            isMobileView && setIsMobileMenuOpen(false);
+                                        }}
+                                    >
+                                        Juntas Vecinales
+                                    </NavLink>
+                                </li>                                
+                            </ul>     
+                    </li>
+
+
+
+
+
+
+
                     <li>
                         <NavLink 
                             to={"/"} 
@@ -56,6 +214,7 @@ export const HeaderTwo = () => {
                             Inicio
                         </NavLink>
                     </li>
+                    
                     <li>
                         <NavLink 
                             to={"/"} 
