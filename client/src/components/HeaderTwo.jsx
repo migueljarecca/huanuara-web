@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export const HeaderTwo = () => {
 
-    const [isActiveDropdown, setIsActiveDropdown] = useState(false);
+    const [isActiveDropdown, setIsActiveDropdown] = useState(null);
     const [ isMobileMenuOpen, setIsMobileMenuOpen ] = useState(false);
     const [isMobileView, setIsMobileView] = useState(false);
 
@@ -24,9 +24,9 @@ export const HeaderTwo = () => {
     },[]);
 
     // Handler for dropdown with click
-    const handlerDropdown = () => {
+    const handlerDropdown = (menu) => {
         if (isMobileView) {
-            setIsActiveDropdown(!isActiveDropdown);
+            setIsActiveDropdown(menu);
         }
     };
 
@@ -54,28 +54,28 @@ export const HeaderTwo = () => {
                     </li>
 
                     <li
-                        onMouseEnter={() => !isMobileView && setIsActiveDropdown(true)}
-                        onMouseLeave={() => !isMobileView && setIsActiveDropdown(false)}                    
+                        onMouseEnter={() => !isMobileView && setIsActiveDropdown('district')}
+                        onMouseLeave={() => !isMobileView && setIsActiveDropdown(null)}                    
                     >
                         <div 
                             className="menu-dropdown" 
-                            onClick={handlerDropdown}
+                            onClick={() => handlerDropdown(isActiveDropdown === 'district' ? null : 'district')}
                         >
                             <span className="menu-name">Distrito</span>
                             <div className="menu-caret">
-                                {isActiveDropdown ? <ChevronUp /> : <ChevronDown />}
+                                {isActiveDropdown === 'district' ? <ChevronUp /> : <ChevronDown />}
                             </div>
                         </div>
                         
                             <ul 
-                                className={`sub-menu ${isActiveDropdown ? 'active' : ''}`}
+                                className={`sub-menu ${isActiveDropdown === 'district' ? 'active' : ''}`}
                             >
                                 <li>
                                     <NavLink 
                                         to={"/district/history"} 
                                         className="sub-menu-link"
                                         onClick={() => {
-                                            setIsActiveDropdown(false)
+                                            setIsActiveDropdown(null)
                                             isMobileView && setIsMobileMenuOpen(false);
                                         }}
                                     >
@@ -87,7 +87,7 @@ export const HeaderTwo = () => {
                                         to="/district/location" 
                                         className="sub-menu-link"
                                         onClick={() => {
-                                            setIsActiveDropdown(false)
+                                            setIsActiveDropdown(null)
                                             isMobileView && setIsMobileMenuOpen(false);
                                         }}
                                     >
@@ -99,7 +99,7 @@ export const HeaderTwo = () => {
                                         to="/district/geography" 
                                         className="sub-menu-link"
                                         onClick={() => {
-                                            setIsActiveDropdown(false)
+                                            setIsActiveDropdown(null)
                                             isMobileView && setIsMobileMenuOpen(false);
                                         }}
                                     >
@@ -111,7 +111,7 @@ export const HeaderTwo = () => {
                                         to="/district/tourism" 
                                         className="sub-menu-link"
                                         onClick={() => {
-                                            setIsActiveDropdown(false)
+                                            setIsActiveDropdown(null)
                                             isMobileView && setIsMobileMenuOpen(false);
                                         }}
                                     >
@@ -122,28 +122,28 @@ export const HeaderTwo = () => {
                     </li>
 
                     <li
-                        onMouseEnter={() => !isMobileView && setIsActiveDropdown(true)}
-                        onMouseLeave={() => !isMobileView && setIsActiveDropdown(false)}                    
+                        onMouseEnter={() => !isMobileView && setIsActiveDropdown('municipality')}
+                        onMouseLeave={() => !isMobileView && setIsActiveDropdown(null)}                    
                     >
                         <div 
                             className="menu-dropdown" 
-                            onClick={handlerDropdown}
+                            onClick={() => handlerDropdown(isActiveDropdown === 'municipality' ? null : 'municipality')}
                         >
                             <span className="menu-name">Municipio</span>
                             <div className="menu-caret">
-                                {isActiveDropdown ? <ChevronUp /> : <ChevronDown />}
+                                {isActiveDropdown === 'municipality' ? <ChevronUp /> : <ChevronDown />}
                             </div>
                         </div>
                         
                             <ul 
-                                className={`sub-menu ${isActiveDropdown ? 'active' : ''}`}
+                                className={`sub-menu ${isActiveDropdown === 'municipality' ? 'active' : ''}`}
                             >
                                 <li>
                                     <NavLink 
                                         to={"/municipality/mission-vision"} 
                                         className="sub-menu-link"
                                         onClick={() => {
-                                            setIsActiveDropdown(false)
+                                            setIsActiveDropdown(null)
                                             isMobileView && setIsMobileMenuOpen(false);
                                         }}
                                     >
@@ -155,7 +155,7 @@ export const HeaderTwo = () => {
                                         to="/municipality/authorities" 
                                         className="sub-menu-link"
                                         onClick={() => {
-                                            setIsActiveDropdown(false)
+                                            setIsActiveDropdown(null)
                                             isMobileView && setIsMobileMenuOpen(false);
                                         }}
                                     >
@@ -167,7 +167,7 @@ export const HeaderTwo = () => {
                                         to="/municipality/council" 
                                         className="sub-menu-link"
                                         onClick={() => {
-                                            setIsActiveDropdown(false)
+                                            setIsActiveDropdown(null)
                                             isMobileView && setIsMobileMenuOpen(false);
                                         }}
                                     >
@@ -179,7 +179,7 @@ export const HeaderTwo = () => {
                                         to="/municipality/organization-chart" 
                                         className="sub-menu-link"
                                         onClick={() => {
-                                            setIsActiveDropdown(false)
+                                            setIsActiveDropdown(null)
                                             isMobileView && setIsMobileMenuOpen(false);
                                         }}
                                     >
@@ -191,7 +191,7 @@ export const HeaderTwo = () => {
                                         to="/municipality/neighborhood-boards" 
                                         className="sub-menu-link"
                                         onClick={() => {
-                                            setIsActiveDropdown(false)
+                                            setIsActiveDropdown(null)
                                             isMobileView && setIsMobileMenuOpen(false);
                                         }}
                                     >
