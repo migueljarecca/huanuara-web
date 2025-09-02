@@ -1,5 +1,9 @@
-import { BookOpen } from "../../assets/icons/Icons"
+import { BookOpen, ChevronRight } from "../../assets/icons/Icons"
 import { NavLink } from "react-router-dom"
+
+import homeServicesCard1 from "../../assets/images/home/ServicesCard/home-services-card-1.png"
+import homeServicesCard2 from "../../assets/images/home/ServicesCard/home-services-card-2.webp"
+import homeServicesCard3 from "../../assets/images/home/ServicesCard/home-services-card-3.jpg"
 
 export const Home = () => {
     return (
@@ -83,8 +87,75 @@ export const Home = () => {
 
             </section>
 
-            <section style={{ height: '200px', backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <section className="home-services">
+                <div className="home-services__container">
+                    <div className="home-services__header">
+                        <h2 className="title">Servicios</h2>
+                        <p className="subtitle">Accede rápidamente a los servicios más solicitados</p>
+                    </div>
 
+                    <div className="home-services__grid">
+
+                        {/* <div className="home-services__wrapper-card"> */}
+                            <div className="home-services__card">
+                                <NavLink to={'/login'} className="card-link"></NavLink> 
+                                <div className="card-wrapper-img">
+                                    <img src={homeServicesCard1} alt="Service Icon 1" />
+                                </div>
+
+                                <div className="card-body">
+                                    <h3>SISFOH</h3>
+                                    <p>Focalización de hogares para programas sociales</p>
+                                </div>
+
+                                <div className="card-action">
+                                    <span>Ver más detalles</span>
+                                    <ChevronRight />
+                                </div>
+                            </div>
+                        {/* </div> */}
+
+                        <div className="home-services__wrapper-card">
+                            <div className="home-services__card">
+                                <NavLink to={'/login'} className="card-link"></NavLink> 
+                                <div className="card-wrapper-img">
+                                    <img src={homeServicesCard2} alt="Service Icon 1" />
+                                </div>
+
+                                <div className="card-body">
+                                    <h3>SISFOH</h3>
+                                    <p>Focalización de hogares para programas sociales</p>
+                                </div>
+
+                                <div className="card-action">
+                                    <span>Ver más detalles</span>
+                                    <ChevronRight />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="home-services__wrapper-card">
+                            <div className="home-services__card">
+                                <NavLink to={'/login'} className="card-link"></NavLink> 
+                                <div className="card-wrapper-img">
+                                    <img src={homeServicesCard3} alt="Service Icon 1" />
+                                </div>
+
+                                <div className="card-body">
+                                    <h3>SISFOH</h3>
+                                    <p>Focalización de hogares para programas sociales</p>
+                                </div>
+
+                                <div className="card-action">
+                                    <span>Ver más detalles</span>
+                                    <ChevronRight />
+                                </div>
+                            </div>
+                        </div>                        
+
+                    </div>
+
+                </div>        
             </section>
         </main>
     )
