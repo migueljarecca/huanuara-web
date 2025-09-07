@@ -204,81 +204,83 @@ export const Home = () => {
             <section className="home-transparency">
 
                 <div className="home-transparency__container">
-                    <div className="home-transparency__content">
-                        <h2 className="home-transparency__title">Documentos de Transparencia</h2>
-                        <p className="subtitle">
-                            En esta sección encontrarás información pública sobre la gestión municipal. 
+                    <div className="home-transparency__header">
+                        <h2 className="home-transparency__header-title">Documentos de Transparencia</h2>
+                        <p className="home-transparency__header-subtitle">
+                            "En esta sección encontrarás información pública sobre la gestión municipal. 
                             Nuestro objetivo es garantizar la transparencia y el acceso libre a los documentos que 
                             fortalecen la confianza entre la municipalidad y la comunidad."</p>
                     </div>
-                </div>
+                    
+                    <div className="home-transparency__grid">
 
-                <div className="home-transparency__grid">
+                        <div className="home-transparency__card">
+                            <div className="home-transparency__card-icon-wrapper">
+                                <Folder />
+                            </div>
 
-                    <div className="home-transparency__card">
-                        <div className="wrapper-icon">
-                            <Folder />
+                            <div className="home-transparency__card-body">
+                                <h3 className="home-transparency__card-title">Presupuesto Municipal</h3>
+                                <p className="home-transparency__card-subtitle">Consulta los presupuestos anuales asignados a la municipalidad y cómo se distribuyen en cada área.</p>
+                            </div>
+
+
+                            <div className="home-transparency__card-action">
+                                <Link to={'/login'} className="home-transparency__card-link">
+                                    <span>Ver más detalles</span>
+                                    <div className="home-transparency__card-link-icon-wrapper">
+                                        <ArrowSmallRight />
+                                    </div>
+                                </Link>
+                            </div>
                         </div>
 
-                        <div className="card-body">
-                            <h3 className="card-title">Presupuesto Municipal</h3>
-                            <p className="card-subtitle">Consulta los presupuestos anuales asignados a la municipalidad y cómo se distribuyen en cada área.</p>
-                        </div>
+                        <div className="home-transparency__card">
+                            <div className="home-transparency__card-icon-wrapper">
+                                <Folder />
+                            </div>
+
+                            <div className="home-transparency__card-body">
+                                <h3 className="home-transparency__card-title">Obras y Proyectos</h3>
+                                <p className="home-transparency__card-subtitle">Información sobre las obras en ejecución y proyectos planificados para la comunidad.</p>
+                            </div>
 
 
-                        <div className="card-action">
-                            <Link to={'/login'} className="home-transparency__see-more-link">
-                                <span>Ver más detalles</span>
-                                <div className="wrapper-icon">
-                                    <ArrowSmallRight />
-                                </div>
-                            </Link>
-                        </div>
+                            <div className="home-transparency__card-action">
+                                <Link to={'/login'} className="home-transparency__card-link">
+                                    <span>Ver más detalles</span>
+                                    <div className="home-transparency__card-link-icon-wrapper">
+                                        <ArrowSmallRight />
+                                    </div>
+                                </Link>
+                            </div>
+                        </div> 
+
+                        <div className="home-transparency__card">
+                            <div className="home-transparency__card-icon-wrapper">
+                                <Folder />
+                            </div>
+
+                            <div className="home-transparency__card-body">
+                                <h3 className="home-transparency__card-title">Rendición de Cuentas</h3>
+                                <p className="home-transparency__card-subtitle">Revisa los informes de gastos e ingresos, garantizando la transparencia en la gestión.</p>
+                            </div>
+
+
+                            <div className="home-transparency__card-action">
+                                <Link to={'/login'} className="home-transparency__card-link">
+                                    <span>Ver más detalles</span>
+                                    <div className="home-transparency__card-link-icon-wrapper">
+                                        <ArrowSmallRight />
+                                    </div>
+                                </Link>
+                            </div>
+                        </div> 
+
                     </div>
 
-                    <div className="home-transparency__card">
-                        <div className="wrapper-icon">
-                            <Folder />
-                        </div>
-
-                        <div className="card-body">
-                            <h3 className="card-title">Obras y Proyectos</h3>
-                            <p className="card-subtitle">Información sobre las obras en ejecución y proyectos planificados para la comunidad.</p>
-                        </div>
-
-
-                        <div className="card-action">
-                            <Link to={'/login'} className="home-transparency__see-more-link">
-                                <span>Ver más detalles</span>
-                                <div className="wrapper-icon">
-                                    <ArrowSmallRight />
-                                </div>
-                            </Link>
-                        </div>
-                    </div>
-
-                    <div className="home-transparency__card">
-                        <div className="wrapper-icon">
-                            <Folder />
-                        </div>
-
-                        <div className="card-body">
-                            <h3 className="card-title">Rendición de Cuentas</h3>
-                            <p className="card-subtitle">Revisa los informes de gastos e ingresos, garantizando la transparencia en la gestión.</p>
-                        </div>
-
-
-                        <div className="card-action">
-                            <Link to={'/login'} className="home-transparency__see-more-link">
-                                <span>Ver más detalles</span>
-                                <div className="wrapper-icon">
-                                    <ArrowSmallRight />
-                                </div>
-                            </Link>
-                        </div>
-                    </div>                                        
-
                 </div>
+
             </section>
         </main>
     )
